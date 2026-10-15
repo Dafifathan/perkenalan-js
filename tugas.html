@@ -1,0 +1,2406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Kosmik Se-Alam Semesta | Tugas JS</title>
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================================
+           COSMIC THEME ENGINE & DESIGN SYSTEM
+           ======================================================== */
+        :root, [data-theme="cosmic-nebula"] {
+            --bg-base: #050810;
+            --bg-gradient: radial-gradient(circle at 20% 15%, rgba(139, 92, 246, 0.55) 0%, transparent 45%),
+                           radial-gradient(circle at 80% 85%, rgba(59, 130, 246, 0.45) 0%, transparent 50%),
+                           radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.3) 0%, transparent 60%),
+                           linear-gradient(135deg, #090b16 0%, #111429 50%, #060813 100%);
+            --primary: #8b5cf6;
+            --primary-glow: rgba(139, 92, 246, 0.6);
+            --primary-light: #c4b5fd;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.55);
+            --card-bg: rgba(17, 24, 39, 0.42);
+            --card-border: rgba(255, 255, 255, 0.14);
+            --card-border-glow: rgba(139, 92, 246, 0.5);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --input-bg: rgba(15, 23, 42, 0.75);
+            --calc-btn-bg: rgba(255, 255, 255, 0.08);
+            --calc-btn-hover: rgba(255, 255, 255, 0.18);
+            --calc-op-bg: rgba(139, 92, 246, 0.28);
+            --calc-op-hover: rgba(139, 92, 246, 0.48);
+            --badge-bg: rgba(139, 92, 246, 0.25);
+            --badge-border: rgba(139, 92, 246, 0.5);
+            --badge-text: #c4b5fd;
+            --canvas-star: 240, 240, 255;
+            --preview-fill: rgba(139, 92, 246, 0.25);
+            --preview-stroke: #8b5cf6;
+            --ambient1: rgba(139, 92, 246, 0.55);
+            --ambient2: rgba(56, 189, 248, 0.5);
+        }
+
+        [data-theme="cyberpunk-neon"] {
+            --bg-base: #03030a;
+            --bg-gradient: radial-gradient(circle at 10% 20%, rgba(244, 63, 94, 0.55) 0%, transparent 40%),
+                           radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.6) 0%, transparent 45%),
+                           radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.2) 0%, transparent 55%),
+                           linear-gradient(135deg, #090a14 0%, #150921 50%, #040914 100%);
+            --primary: #06b6d4;
+            --primary-glow: rgba(6, 182, 212, 0.7);
+            --primary-light: #67e8f9;
+            --accent: #f43f5e;
+            --accent-glow: rgba(244, 63, 94, 0.7);
+            --card-bg: rgba(13, 16, 28, 0.42);
+            --card-border: rgba(6, 182, 212, 0.3);
+            --card-border-glow: rgba(6, 182, 212, 0.65);
+            --text-main: #f0fdf4;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --input-bg: rgba(9, 14, 26, 0.78);
+            --calc-btn-bg: rgba(6, 182, 212, 0.1);
+            --calc-btn-hover: rgba(6, 182, 212, 0.28);
+            --calc-op-bg: rgba(244, 63, 94, 0.3);
+            --calc-op-hover: rgba(244, 63, 94, 0.52);
+            --badge-bg: rgba(6, 182, 212, 0.25);
+            --badge-border: rgba(6, 182, 212, 0.6);
+            --badge-text: #67e8f9;
+            --canvas-star: 103, 232, 249;
+            --preview-fill: rgba(6, 182, 212, 0.25);
+            --preview-stroke: #06b6d4;
+            --ambient1: rgba(244, 63, 94, 0.6);
+            --ambient2: rgba(6, 182, 212, 0.65);
+        }
+
+        [data-theme="supernova-gold"] {
+            --bg-base: #0c0802;
+            --bg-gradient: radial-gradient(circle at 25% 20%, rgba(245, 158, 11, 0.62) 0%, transparent 45%),
+                           radial-gradient(circle at 75% 80%, rgba(239, 68, 68, 0.5) 0%, transparent 50%),
+                           radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.3) 0%, transparent 60%),
+                           linear-gradient(135deg, #180d05 0%, #261208 50%, #100803 100%);
+            --primary: #f59e0b;
+            --primary-glow: rgba(245, 158, 11, 0.7);
+            --primary-light: #fde68a;
+            --accent: #f97316;
+            --accent-glow: rgba(249, 115, 22, 0.65);
+            --card-bg: rgba(28, 18, 10, 0.42);
+            --card-border: rgba(245, 158, 11, 0.35);
+            --card-border-glow: rgba(245, 158, 11, 0.6);
+            --text-main: #fffbeb;
+            --text-muted: #e2d3b3;
+            --text-dim: #a18a68;
+            --input-bg: rgba(20, 12, 6, 0.78);
+            --calc-btn-bg: rgba(245, 158, 11, 0.1);
+            --calc-btn-hover: rgba(245, 158, 11, 0.28);
+            --calc-op-bg: rgba(249, 115, 22, 0.32);
+            --calc-op-hover: rgba(249, 115, 22, 0.55);
+            --badge-bg: rgba(245, 158, 11, 0.25);
+            --badge-border: rgba(245, 158, 11, 0.55);
+            --badge-text: #fde68a;
+            --canvas-star: 254, 240, 138;
+            --preview-fill: rgba(245, 158, 11, 0.25);
+            --preview-stroke: #f59e0b;
+            --ambient1: rgba(245, 158, 11, 0.65);
+            --ambient2: rgba(249, 115, 22, 0.6);
+        }
+
+        [data-theme="aurora-borealis"] {
+            --bg-base: #020e0e;
+            --bg-gradient: radial-gradient(circle at 15% 25%, rgba(16, 185, 129, 0.6) 0%, transparent 45%),
+                           radial-gradient(circle at 85% 75%, rgba(6, 182, 212, 0.6) 0%, transparent 50%),
+                           radial-gradient(circle at 50% 10%, rgba(20, 184, 166, 0.4) 0%, transparent 50%),
+                           linear-gradient(135deg, #031716 0%, #062826 50%, #03141b 100%);
+            --primary: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.7);
+            --primary-light: #a7f3d0;
+            --accent: #14b8a6;
+            --accent-glow: rgba(20, 184, 166, 0.65);
+            --card-bg: rgba(6, 32, 33, 0.42);
+            --card-border: rgba(16, 185, 129, 0.3);
+            --card-border-glow: rgba(16, 185, 129, 0.6);
+            --text-main: #f0fdf4;
+            --text-muted: #99f6e4;
+            --text-dim: #5eead4;
+            --input-bg: rgba(4, 22, 22, 0.78);
+            --calc-btn-bg: rgba(16, 185, 129, 0.1);
+            --calc-btn-hover: rgba(16, 185, 129, 0.26);
+            --calc-op-bg: rgba(20, 184, 166, 0.3);
+            --calc-op-hover: rgba(20, 184, 166, 0.52);
+            --badge-bg: rgba(16, 185, 129, 0.25);
+            --badge-border: rgba(16, 185, 129, 0.55);
+            --badge-text: #a7f3d0;
+            --canvas-star: 167, 243, 208;
+            --preview-fill: rgba(16, 185, 129, 0.25);
+            --preview-stroke: #10b981;
+            --ambient1: rgba(16, 185, 129, 0.65);
+            --ambient2: rgba(20, 184, 166, 0.6);
+        }
+
+        [data-theme="void-eclipse"] {
+            --bg-base: #000000;
+            --bg-gradient: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.12) 0%, transparent 55%),
+                           radial-gradient(circle at 20% 80%, rgba(148, 163, 184, 0.1) 0%, transparent 50%),
+                           radial-gradient(circle at 80% 20%, rgba(100, 116, 139, 0.1) 0%, transparent 50%),
+                           linear-gradient(180deg, #020202 0%, #0d0d11 100%);
+            --primary: #ffffff;
+            --primary-glow: rgba(255, 255, 255, 0.4);
+            --primary-light: #e4e4e7;
+            --accent: #a1a1aa;
+            --accent-glow: rgba(161, 161, 170, 0.35);
+            --card-bg: rgba(18, 18, 23, 0.48);
+            --card-border: rgba(255, 255, 255, 0.2);
+            --card-border-glow: rgba(255, 255, 255, 0.4);
+            --text-main: #ffffff;
+            --text-muted: #cbd5e1;
+            --text-dim: #71717a;
+            --input-bg: rgba(10, 10, 13, 0.82);
+            --calc-btn-bg: rgba(255, 255, 255, 0.08);
+            --calc-btn-hover: rgba(255, 255, 255, 0.18);
+            --calc-op-bg: rgba(255, 255, 255, 0.2);
+            --calc-op-hover: rgba(255, 255, 255, 0.35);
+            --badge-bg: rgba(255, 255, 255, 0.14);
+            --badge-border: rgba(255, 255, 255, 0.3);
+            --badge-text: #ffffff;
+            --canvas-star: 255, 255, 255;
+            --preview-fill: rgba(255, 255, 255, 0.18);
+            --preview-stroke: #ffffff;
+            --ambient1: rgba(200, 200, 220, 0.2);
+            --ambient2: rgba(160, 160, 180, 0.15);
+        }
+
+        [data-theme="starlight-sakura"] {
+            --bg-base: #0e0610;
+            --bg-gradient: radial-gradient(circle at 20% 25%, rgba(244, 114, 182, 0.62) 0%, transparent 45%),
+                           radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.55) 0%, transparent 50%),
+                           radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.3) 0%, transparent 60%),
+                           linear-gradient(135deg, #190a1c 0%, #29102c 50%, #110714 100%);
+            --primary: #f472b6;
+            --primary-glow: rgba(244, 114, 182, 0.7);
+            --primary-light: #fbcfe8;
+            --accent: #c084fc;
+            --accent-glow: rgba(192, 132, 252, 0.65);
+            --card-bg: rgba(33, 16, 36, 0.42);
+            --card-border: rgba(244, 114, 182, 0.32);
+            --card-border-glow: rgba(244, 114, 182, 0.6);
+            --text-main: #fdf2f8;
+            --text-muted: #fbcfe8;
+            --text-dim: #f472b6;
+            --input-bg: rgba(23, 10, 26, 0.78);
+            --calc-btn-bg: rgba(244, 114, 182, 0.1);
+            --calc-btn-hover: rgba(244, 114, 182, 0.28);
+            --calc-op-bg: rgba(192, 132, 252, 0.3);
+            --calc-op-hover: rgba(192, 132, 252, 0.52);
+            --badge-bg: rgba(244, 114, 182, 0.25);
+            --badge-border: rgba(244, 114, 182, 0.55);
+            --badge-text: #fbcfe8;
+            --canvas-star: 251, 207, 232;
+            --preview-fill: rgba(244, 114, 182, 0.25);
+            --preview-stroke: #f472b6;
+            --ambient1: rgba(244, 114, 182, 0.65);
+            --ambient2: rgba(192, 132, 252, 0.6);
+        }
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: var(--bg-base);
+            background-image: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 24px 16px 48px;
+            position: relative;
+            overflow-x: hidden;
+            transition: background 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Cosmic Canvas Background */
+        #cosmicCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Ambient glowing orbs */
+        .ambient-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.8;
+            transition: all 0.8s ease;
+        }
+
+        .ambient-glow-1 {
+            width: 650px;
+            height: 650px;
+            top: -150px;
+            left: -150px;
+            background: var(--ambient1, var(--primary-glow));
+        }
+
+        .ambient-glow-2 {
+            width: 600px;
+            height: 600px;
+            bottom: -120px;
+            right: -120px;
+            background: var(--ambient2, var(--accent-glow));
+        }
+
+        .ambient-glow-3 {
+            width: 500px;
+            height: 500px;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-glow);
+            opacity: 0.3;
+        }
+
+        /* Main Container */
+        .app-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 860px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* ========================================================
+           HEADER & CONTROL BAR
+           ======================================================== */
+        .top-navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 12px 20px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px var(--card-border-glow);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .brand-cluster {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 0 20px var(--primary-glow);
+            animation: pulse-cosmic 4s infinite alternate;
+        }
+
+        @keyframes pulse-cosmic {
+            0% { transform: scale(1); filter: brightness(1); }
+            100% { transform: scale(1.06); filter: brightness(1.2); }
+        }
+
+        .brand-text h1 {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #ffffff, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-text p {
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* Sound toggle button */
+        .action-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            border-radius: 12px;
+            padding: 8px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.16);
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* Theme Selector Menu */
+        .theme-selector-box {
+            position: relative;
+        }
+
+        .theme-select-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            border-radius: 12px;
+            padding: 8px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .theme-select-btn:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .theme-preview-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        .theme-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 16px;
+            padding: 8px;
+            width: 230px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px var(--card-border-glow);
+            z-index: 100;
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            animation: fadeInDown 0.2s ease forwards;
+        }
+
+        .theme-dropdown.open {
+            display: flex;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 12px;
+            border-radius: 10px;
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            transition: all 0.15s ease;
+        }
+
+        .theme-option:hover, .theme-option.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .theme-option.active {
+            font-weight: 700;
+            border-left: 3px solid var(--primary);
+        }
+
+        .theme-option-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Navigation Mode Tabs */
+        .mode-nav {
+            display: flex;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(16px);
+            border-radius: 16px;
+            padding: 6px;
+            gap: 6px;
+        }
+
+        .mode-tab {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .mode-tab:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .mode-tab.active {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+            color: #ffffff;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4), 0 0 15px var(--primary-glow);
+        }
+
+        .mode-tab.active .tab-icon {
+            transform: scale(1.15);
+        }
+
+        .tab-icon {
+            font-size: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        /* ========================================================
+           TAB CONTENT SECTIONS
+           ======================================================== */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.35s ease forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Main Glass Card */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 28px;
+            padding: 36px 32px;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.65), 0 0 30px var(--card-border-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        }
+
+        /* Section Header */
+        .card-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            border: 1px solid var(--badge-border);
+            margin-bottom: 12px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Formula Display Grid */
+        .formula-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .formula-card {
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 14px 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.25s ease;
+        }
+
+        .formula-card:hover {
+            border-color: var(--card-border-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        .formula-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .formula-math {
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+        }
+
+        /* ========================================================
+           INTERACTIVE GEOMETRY PREVIEW (SVG LIVE CANVAS)
+           ======================================================== */
+        .shape-preview-wrapper {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 24px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+        }
+
+        .shape-preview-header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .preview-svg-container {
+            width: 100%;
+            max-width: 480px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #rectangleSvg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        /* Input Controls */
+        .input-dual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        .input-block {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 16px 18px;
+            transition: all 0.2s ease;
+        }
+
+        .input-block:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .input-label-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .input-label-row label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .input-unit-tag {
+            font-size: 11px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        .input-number-field {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            color: #ffffff;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .input-number-field:focus {
+            border-color: var(--primary);
+        }
+
+        /* Range Slider */
+        .slider-bar {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.12);
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            margin-top: 4px;
+        }
+
+        .slider-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 10px var(--primary-glow);
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        .slider-bar::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* Quick Presets Row */
+        .presets-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .presets-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-right: 4px;
+        }
+
+        .preset-chip {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            border-radius: 9999px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .preset-chip:hover {
+            background: var(--calc-btn-hover);
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* Result Cards Grid */
+        .results-four-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .result-tile {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.85));
+            border-radius: 20px;
+            padding: 22px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.25s ease;
+        }
+
+        .result-tile:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .result-tile.luas {
+            border-top: 3px solid var(--primary);
+        }
+
+        .result-tile.keliling {
+            border-top: 3px solid var(--accent);
+        }
+
+        .result-tile.diagonal {
+            border-top: 3px solid #ec4899;
+        }
+
+        .result-tile.semi {
+            border-top: 3px solid #10b981;
+        }
+
+        .result-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .result-title-text {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .copy-icon-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 6px;
+            transition: all 0.15s ease;
+        }
+
+        .copy-icon-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .result-main-value {
+            font-size: 36px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 4px;
+            word-break: break-word;
+        }
+
+        .result-unit-text {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Step by Step Formula Card */
+        .formula-steps-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .steps-header {
+            font-size: 13px;
+            font-weight: 700;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-row {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.07);
+            font-size: 14px;
+        }
+
+        .step-row:last-child {
+            border-bottom: none;
+        }
+
+        .step-tag {
+            font-weight: 700;
+            color: var(--primary-light);
+            min-width: 90px;
+            font-size: 13px;
+        }
+
+        .step-formula {
+            font-family: 'JetBrains Mono', monospace;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Live Console Logger Terminal Box */
+        .terminal-box {
+            background: #02040a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .tdot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .tdot-red { background: #ef4444; }
+        .tdot-yellow { background: #f59e0b; }
+        .tdot-green { background: #10b981; }
+
+        .terminal-title {
+            color: var(--text-dim);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .terminal-body {
+            color: #38bdf8;
+            line-height: 1.6;
+            max-height: 130px;
+            overflow-y: auto;
+        }
+
+        .terminal-body .term-line {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .terminal-body .term-highlight {
+            color: #a7f3d0;
+            font-weight: 700;
+        }
+
+        /* ========================================================
+           UNIVERSAL SCIENTIFIC CALCULATOR MODE
+           ======================================================== */
+        .universal-calc-container {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* Display Screen */
+        .calc-screen {
+            background: rgba(10, 14, 26, 0.9);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 20px;
+            text-align: right;
+            box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 20px var(--primary-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calc-screen-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .calc-mode-indicator {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .calc-history-view {
+            font-size: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+            min-height: 22px;
+            word-break: break-all;
+        }
+
+        .calc-main-view {
+            font-size: 44px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            color: #ffffff;
+            line-height: 1.1;
+            word-break: break-all;
+            transition: font-size 0.15s ease;
+        }
+
+        /* Keypad Grid */
+        .calc-keypad {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .calc-key {
+            height: 60px;
+            border-radius: 16px;
+            background: var(--calc-btn-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+            outline: none;
+        }
+
+        .calc-key:hover {
+            background: var(--calc-btn-hover);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .calc-key:active {
+            transform: scale(0.95);
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Key Varieties */
+        .key-op {
+            background: var(--calc-op-bg);
+            color: #ffffff;
+            border-color: var(--card-border);
+        }
+
+        .key-op:hover {
+            background: var(--calc-op-hover);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .key-sci {
+            font-size: 15px;
+            color: var(--primary-light);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .key-action {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .key-action:hover {
+            background: rgba(239, 68, 68, 0.35);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+        }
+
+        .key-equals {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #ffffff;
+            font-size: 24px;
+            grid-column: span 2;
+            box-shadow: 0 0 25px var(--primary-glow);
+        }
+
+        .key-equals:hover {
+            filter: brightness(1.15);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--primary-glow);
+        }
+
+        /* Scientific Drawer Toggle */
+        .sci-toggle-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .sci-toggle-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            border-radius: 10px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .sci-toggle-btn.active, .sci-toggle-btn:hover {
+            color: #ffffff;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .sci-keys-drawer {
+            display: none;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 12px;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .sci-keys-drawer.open {
+            display: grid;
+        }
+
+        /* Calc History Drawer */
+        .history-section {
+            margin-top: 24px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 16px;
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .clear-history-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .clear-history-btn:hover {
+            color: #ef4444;
+        }
+
+        .history-list {
+            max-height: 160px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .history-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(4px);
+        }
+
+        .history-eq {
+            color: var(--text-muted);
+        }
+
+        .history-res {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Toast Notification */
+        .cosmic-toast {
+            position: fixed;
+            bottom: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--primary);
+            backdrop-filter: blur(20px);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-glow);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .cosmic-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Footer */
+        .cosmic-footer {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+
+        .cosmic-footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 680px) {
+            body { padding: 12px 10px 36px; }
+            .glass-card { padding: 24px 18px; border-radius: 22px; }
+            .input-dual-grid, .results-four-grid, .formula-grid { grid-template-columns: 1fr; }
+            .card-title { font-size: 22px; }
+            .result-main-value { font-size: 30px; }
+            .calc-key { height: 52px; font-size: 18px; }
+            .top-navbar { padding: 10px 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Cosmic Particle Canvas -->
+    <canvas id="cosmicCanvas"></canvas>
+
+    <!-- Glowing Background Atmosphere -->
+    <div class="ambient-glow ambient-glow-1"></div>
+    <div class="ambient-glow ambient-glow-2"></div>
+    <div class="ambient-glow ambient-glow-3"></div>
+
+    <!-- App Wrapper -->
+    <div class="app-wrapper">
+
+        <!-- Top Navigation Bar -->
+        <header class="top-navbar">
+            <div class="brand-cluster">
+                <div class="brand-icon">🪐</div>
+                <div class="brand-text">
+                    <h1>COSMIC CALC</h1>
+                    <p>Kalkulator Se-Alam Semesta</p>
+                </div>
+            </div>
+
+            <div class="top-actions">
+                <!-- Sound Synthesizer Toggle -->
+                <button class="action-btn" id="soundToggleBtn" title="Aktifkan/Matikan Efek Suara Kosmik">
+                    <span id="soundIcon">🔊</span>
+                    <span id="soundText">Audio: Aktif</span>
+                </button>
+
+                <!-- Theme Selector -->
+                <div class="theme-selector-box">
+                    <button class="theme-select-btn" id="themeDropdownBtn" title="Pilih Tema Kosmik">
+                        <span class="theme-preview-dot"></span>
+                        <span id="currentThemeName">Cosmic Nebula</span>
+                        <span>▼</span>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button class="theme-option active" data-theme-val="cosmic-nebula">
+                            <span class="theme-option-dot" style="background: #8b5cf6; box-shadow: 0 0 8px #8b5cf6;"></span>
+                            Cosmic Nebula
+                        </button>
+                        <button class="theme-option" data-theme-val="cyberpunk-neon">
+                            <span class="theme-option-dot" style="background: #06b6d4; box-shadow: 0 0 8px #06b6d4;"></span>
+                            Cyberpunk Neon
+                        </button>
+                        <button class="theme-option" data-theme-val="supernova-gold">
+                            <span class="theme-option-dot" style="background: #f59e0b; box-shadow: 0 0 8px #f59e0b;"></span>
+                            Supernova Gold
+                        </button>
+                        <button class="theme-option" data-theme-val="aurora-borealis">
+                            <span class="theme-option-dot" style="background: #10b981; box-shadow: 0 0 8px #10b981;"></span>
+                            Aurora Borealis
+                        </button>
+                        <button class="theme-option" data-theme-val="void-eclipse">
+                            <span class="theme-option-dot" style="background: #ffffff; box-shadow: 0 0 8px #ffffff;"></span>
+                            Void Eclipse
+                        </button>
+                        <button class="theme-option" data-theme-val="starlight-sakura">
+                            <span class="theme-option-dot" style="background: #f472b6; box-shadow: 0 0 8px #f472b6;"></span>
+                            Starlight Sakura
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mode Navigation Tabs -->
+        <nav class="mode-nav" aria-label="Mode Kalkulator">
+            <button class="mode-tab active" id="tabPersegi" onclick="switchCalculatorMode('persegi')">
+                <span class="tab-icon">📐</span>
+                <span>Hitung Persegi Panjang (Tugas JS)</span>
+            </button>
+            <button class="mode-tab" id="tabUniversal" onclick="switchCalculatorMode('universal')">
+                <span class="tab-icon">🚀</span>
+                <span>Kalkulator Kosmik Universal</span>
+            </button>
+        </nav>
+
+        <!-- ========================================================
+             TAB 1: PERSEGI PANJANG (TUGAS JS)
+             ======================================================== -->
+        <main class="tab-content active" id="contentPersegi">
+            <div class="glass-card">
+                <!-- Header -->
+                <div class="card-header">
+                    <span class="badge-pill">✨ JavaScript Internal Pro</span>
+                    <h2 class="card-title">Hitung Persegi Panjang</h2>
+                    <p class="card-subtitle">Kalkulasi luas, keliling, diagonal, dan visualisasi geometris interaktif secara real-time</p>
+                </div>
+
+                <!-- Rumus Formula Cards -->
+                <div class="formula-grid">
+                    <div class="formula-card">
+                        <div class="formula-label">Rumus Luas</div>
+                        <div class="formula-math">panjang × lebar</div>
+                    </div>
+                    <div class="formula-card">
+                        <div class="formula-label">Rumus Keliling</div>
+                        <div class="formula-math">2 × (panjang + lebar)</div>
+                    </div>
+                </div>
+
+                <!-- Interactive SVG Shape Preview -->
+                <div class="shape-preview-wrapper">
+                    <div class="shape-preview-header">
+                        <span>Visualisasi Geometri Real-Time</span>
+                        <span id="previewRatioText">Rasio: 2 : 1</span>
+                    </div>
+                    <div class="preview-svg-container">
+                        <svg id="rectangleSvg" viewBox="0 0 320 160">
+                            <!-- SVG Rectangle dynamically updated -->
+                            <defs>
+                                <linearGradient id="rectGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.35"/>
+                                    <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.2"/>
+                                </linearGradient>
+                            </defs>
+                            <rect id="svgRect" x="30" y="20" width="260" height="120" rx="12"
+                                  fill="url(#rectGrad)" stroke="var(--preview-stroke)" stroke-width="2.5" />
+                            <!-- Diagonal line -->
+                            <line id="svgDiagonal" x1="30" y1="140" x2="290" y2="20" 
+                                  stroke="rgba(255, 255, 255, 0.35)" stroke-dasharray="6,4" stroke-width="1.5" />
+                            <!-- Dimension labels -->
+                            <text id="svgTextP" x="160" y="15" fill="#ffffff" font-size="12" font-family="'JetBrains Mono', monospace" font-weight="700" text-anchor="middle">p = 10 cm</text>
+                            <text id="svgTextL" x="20" y="80" fill="#ffffff" font-size="12" font-family="'JetBrains Mono', monospace" font-weight="700" text-anchor="middle" transform="rotate(-90 20 80)">l = 5 cm</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Input Nilai (Panjang & Lebar Bebas) -->
+                <div class="input-dual-grid">
+                    <div class="input-block">
+                        <div class="input-label-row">
+                            <label for="inputPanjang">
+                                <span>Panjang (p)</span>
+                            </label>
+                            <span class="input-unit-tag">cm</span>
+                        </div>
+                        <input type="number" id="inputPanjang" class="input-number-field" value="10" min="0" step="any" placeholder="Masukkan panjang...">
+                        <input type="range" id="sliderPanjang" class="slider-bar" min="1" max="100" value="10">
+                    </div>
+
+                    <div class="input-block">
+                        <div class="input-label-row">
+                            <label for="inputLebar">
+                                <span>Lebar (l)</span>
+                            </label>
+                            <span class="input-unit-tag">cm</span>
+                        </div>
+                        <input type="number" id="inputLebar" class="input-number-field" value="5" min="0" step="any" placeholder="Masukkan lebar...">
+                        <input type="range" id="sliderLebar" class="slider-bar" min="1" max="100" value="5">
+                    </div>
+                </div>
+
+                <!-- Quick Preset Values -->
+                <div class="presets-row">
+                    <span class="presets-label">Preset Cepat:</span>
+                    <button class="preset-chip" onclick="setPreset(10, 5)">10 × 5 (Default)</button>
+                    <button class="preset-chip" onclick="setPreset(16, 9)">16 × 9 (Widescreen)</button>
+                    <button class="preset-chip" onclick="setPreset(25, 14)">25 × 14 (Sedang)</button>
+                    <button class="preset-chip" onclick="setPreset(100, 64)">100 × 64 (Lapangan)</button>
+                </div>
+
+                <!-- Hasil Perhitungan 4 Grid -->
+                <div class="results-four-grid">
+                    <div class="result-tile luas">
+                        <div class="result-header-row">
+                            <span class="result-title-text">Luas Persegi Panjang</span>
+                            <button class="copy-icon-btn" onclick="copyValue('displayLuas', 'cm²')" title="Salin Nilai">📋</button>
+                        </div>
+                        <div class="result-main-value" id="displayLuas">0</div>
+                        <div class="result-unit-text">cm² (sentimeter persegi)</div>
+                    </div>
+
+                    <div class="result-tile keliling">
+                        <div class="result-header-row">
+                            <span class="result-title-text">Keliling Persegi Panjang</span>
+                            <button class="copy-icon-btn" onclick="copyValue('displayKeliling', 'cm')" title="Salin Nilai">📋</button>
+                        </div>
+                        <div class="result-main-value" id="displayKeliling">0</div>
+                        <div class="result-unit-text">cm (sentimeter)</div>
+                    </div>
+
+                    <div class="result-tile diagonal">
+                        <div class="result-header-row">
+                            <span class="result-title-text">Garis Diagonal</span>
+                            <button class="copy-icon-btn" onclick="copyValue('displayDiagonal', 'cm')" title="Salin Nilai">📋</button>
+                        </div>
+                        <div class="result-main-value" id="displayDiagonal">0</div>
+                        <div class="result-unit-text">cm (√(p² + l²))</div>
+                    </div>
+
+                    <div class="result-tile semi">
+                        <div class="result-header-row">
+                            <span class="result-title-text">Setengah Keliling (s)</span>
+                            <button class="copy-icon-btn" onclick="copyValue('displaySemi', 'cm')" title="Salin Nilai">📋</button>
+                        </div>
+                        <div class="result-main-value" id="displaySemi">0</div>
+                        <div class="result-unit-text">cm (p + l)</div>
+                    </div>
+                </div>
+
+                <!-- Step-by-Step Breakdown -->
+                <div class="formula-steps-card">
+                    <div class="steps-header">
+                        <span>📝 Langkah Perhitungan Lengkap</span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-tag">Langkah 1:</span>
+                        <span class="step-formula" id="stepLuas">Luas = 10 × 5 = 50 cm²</span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-tag">Langkah 2:</span>
+                        <span class="step-formula" id="stepKeliling">Keliling = 2 × (10 + 5) = 2 × 15 = 30 cm</span>
+                    </div>
+                    <div class="step-row">
+                        <span class="step-tag">Langkah 3:</span>
+                        <span class="step-formula" id="stepDiagonal">Diagonal = √(10² + 5²) = √(125) ≈ 11.18 cm</span>
+                    </div>
+                </div>
+
+                <!-- Real-time Console Terminal Output -->
+                <div class="terminal-box">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <div class="tdot tdot-red"></div>
+                            <div class="tdot tdot-yellow"></div>
+                            <div class="tdot tdot-green"></div>
+                        </div>
+                        <span class="terminal-title">Console Browser Mirror (F12)</span>
+                        <span style="font-size: 10px; color: var(--text-dim);">Live Sync</span>
+                    </div>
+                    <div class="terminal-body" id="consoleMirrorBody">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ========================================================
+             TAB 2: KALKULATOR KOSMIK UNIVERSAL (SAINTIFIK)
+             ======================================================== -->
+        <main class="tab-content" id="contentUniversal">
+            <div class="glass-card universal-calc-container">
+                <div class="card-header" style="margin-bottom: 18px;">
+                    <span class="badge-pill">🌌 Universal Calculator</span>
+                    <h2 class="card-title">Kalkulator Kosmik</h2>
+                    <p class="card-subtitle">Perhitungan standar dan saintifik bertenaga tinggi</p>
+                </div>
+
+                <!-- Display Screen -->
+                <div class="calc-screen">
+                    <div class="calc-screen-top">
+                        <span class="calc-mode-indicator" id="calcDegreeMode">RAD</span>
+                        <span class="calc-history-view" id="calcExpression"></span>
+                    </div>
+                    <div class="calc-main-view" id="calcDisplay">0</div>
+                </div>
+
+                <!-- Scientific Toggle Bar -->
+                <div class="sci-toggle-bar">
+                    <button class="sci-toggle-btn" id="toggleSciBtn" onclick="toggleSciKeys()">
+                        ⚡ Fungsi Saintifik (sin, cos, √, π...)
+                    </button>
+                    <button class="sci-toggle-btn" id="toggleDegRadBtn" onclick="toggleDegRad()">
+                        Modus: <span id="radDegLabel">RAD</span>
+                    </button>
+                </div>
+
+                <!-- Drawer Scientific Keys -->
+                <div class="sci-keys-drawer" id="sciKeysDrawer">
+                    <button class="calc-key key-sci" onclick="calcInput('sin(')">sin</button>
+                    <button class="calc-key key-sci" onclick="calcInput('cos(')">cos</button>
+                    <button class="calc-key key-sci" onclick="calcInput('tan(')">tan</button>
+                    <button class="calc-key key-sci" onclick="calcInput('sqrt(')">√</button>
+                    <button class="calc-key key-sci" onclick="calcInput('^')">xʸ</button>
+                    <button class="calc-key key-sci" onclick="calcInput('pi')">π</button>
+                    <button class="calc-key key-sci" onclick="calcInput('e')">e</button>
+                    <button class="calc-key key-sci" onclick="calcInput('log(')">log</button>
+                </div>
+
+                <!-- Standard Keypad -->
+                <div class="calc-keypad">
+                    <!-- Row 1 -->
+                    <button class="calc-key key-action" onclick="calcClear()">AC</button>
+                    <button class="calc-key key-action" onclick="calcDelete()">⌫</button>
+                    <button class="calc-key key-op" onclick="calcInput('%')">%</button>
+                    <button class="calc-key key-op" onclick="calcInput('÷')">÷</button>
+
+                    <!-- Row 2 -->
+                    <button class="calc-key" onclick="calcInput('7')">7</button>
+                    <button class="calc-key" onclick="calcInput('8')">8</button>
+                    <button class="calc-key" onclick="calcInput('9')">9</button>
+                    <button class="calc-key key-op" onclick="calcInput('×')">×</button>
+
+                    <!-- Row 3 -->
+                    <button class="calc-key" onclick="calcInput('4')">4</button>
+                    <button class="calc-key" onclick="calcInput('5')">5</button>
+                    <button class="calc-key" onclick="calcInput('6')">6</button>
+                    <button class="calc-key key-op" onclick="calcInput('-')">−</button>
+
+                    <!-- Row 4 -->
+                    <button class="calc-key" onclick="calcInput('1')">1</button>
+                    <button class="calc-key" onclick="calcInput('2')">2</button>
+                    <button class="calc-key" onclick="calcInput('3')">3</button>
+                    <button class="calc-key key-op" onclick="calcInput('+')">+</button>
+
+                    <!-- Row 5 -->
+                    <button class="calc-key" onclick="calcInput('0')">0</button>
+                    <button class="calc-key" onclick="calcInput('.')">.</button>
+                    <button class="calc-key key-equals" onclick="calcExecute()">=</button>
+                </div>
+
+                <!-- History Section -->
+                <div class="history-section">
+                    <div class="history-header">
+                        <span>📜 Riwayat Perhitungan</span>
+                        <button class="clear-history-btn" onclick="clearCalcHistory()">Hapus</button>
+                    </div>
+                    <div class="history-list" id="calcHistoryList">
+                        <div style="font-size: 12px; color: var(--text-dim); text-align: center; padding: 10px;">Belum ada riwayat</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="cosmic-footer">
+            <p>Dibuat dengan segenap cinta kosmik • JavaScript Internal & Modern Web API 🚀</p>
+        </footer>
+
+    </div>
+
+    <!-- Toast Notification Element -->
+    <div class="cosmic-toast" id="cosmicToast">
+        <span>✨</span>
+        <span id="toastMsg">Tersalin ke papan klip!</span>
+    </div>
+
+    <!-- ========================================================
+         JAVASCRIPT LOGIC
+         ======================================================== -->
+    <script>
+        /* ========================================================
+           1. BAGIAN TUGAS: VARIABEL AWAL & LOGIKA PERSEGI PANJANG
+           ======================================================== */
+        // Menentukan nilai awal panjang dan lebar (bebas mau berapa)
+        let panjang = 10;
+        let lebar = 5;
+
+        // Menghitung Luas dan Keliling awal
+        let luas = panjang * lebar;
+        let keliling = 2 * (panjang + lebar);
+
+        // Menampilkan ke console browser persis sesuai tugas
+        console.log("=== PERHITUNGAN PERSEGI PANJANG ===");
+        console.log("Panjang  : " + panjang);
+        console.log("Lebar    : " + lebar);
+        console.log("Luas     : " + luas);
+        console.log("Keliling : " + keliling);
+        console.log("===================================");
+
+        // Elemen Input dan Display Persegi Panjang
+        const inputP = document.getElementById("inputPanjang");
+        const inputL = document.getElementById("inputLebar");
+        const sliderP = document.getElementById("sliderPanjang");
+        const sliderL = document.getElementById("sliderLebar");
+        const displayLuas = document.getElementById("displayLuas");
+        const displayKeliling = document.getElementById("displayKeliling");
+        const displayDiagonal = document.getElementById("displayDiagonal");
+        const displaySemi = document.getElementById("displaySemi");
+
+        const stepLuas = document.getElementById("stepLuas");
+        const stepKeliling = document.getElementById("stepKeliling");
+        const stepDiagonal = document.getElementById("stepDiagonal");
+        const consoleMirrorBody = document.getElementById("consoleMirrorBody");
+
+        // SVG Visualizer Elements
+        const svgRect = document.getElementById("svgRect");
+        const svgDiagonal = document.getElementById("svgDiagonal");
+        const svgTextP = document.getElementById("svgTextP");
+        const svgTextL = document.getElementById("svgTextL");
+        const previewRatioText = document.getElementById("previewRatioText");
+
+        // Fungsi menampilkan hasil ke tampilan HTML
+        function tampilkanHasil(p, l) {
+            let hitungLuas = p * l;
+            let hitungKeliling = 2 * (p + l);
+            let hitungDiagonal = Math.sqrt((p * p) + (l * l));
+            let hitungSemi = p + l;
+
+            // Format angka agar rapi jika desimal
+            const formatAngka = (num) => {
+                if (Number.isInteger(num)) return num;
+                return parseFloat(num.toFixed(2));
+            };
+
+            displayLuas.innerText = formatAngka(hitungLuas);
+            displayKeliling.innerText = formatAngka(hitungKeliling);
+            displayDiagonal.innerText = formatAngka(hitungDiagonal);
+            displaySemi.innerText = formatAngka(hitungSemi);
+
+            // Update Langkah-langkah
+            stepLuas.innerText = `Luas = ${p} × ${l} = ${formatAngka(hitungLuas)} cm²`;
+            stepKeliling.innerText = `Keliling = 2 × (${p} + ${l}) = 2 × ${p + l} = ${formatAngka(hitungKeliling)} cm`;
+            stepDiagonal.innerText = `Diagonal = √(${p}² + ${l}²) = √(${(p*p)+(l*l)}) ≈ ${formatAngka(hitungDiagonal)} cm`;
+
+            // Update SVG Geometric Shape
+            updateSvgShape(p, l);
+
+            // Update Terminal Mirror
+            updateTerminalMirror(p, l, hitungLuas, hitungKeliling, hitungDiagonal);
+        }
+
+        // Fungsi memperbarui preview bentuk SVG
+        function updateSvgShape(p, l) {
+            if (p <= 0 || l <= 0) {
+                previewRatioText.innerText = "Ukuran tidak valid";
+                return;
+            }
+
+            // Hitung skala pas dalam kotak viewBox 320x160
+            const maxW = 250;
+            const maxH = 110;
+            const aspect = p / l;
+
+            let w, h;
+            if (aspect >= maxW / maxH) {
+                w = maxW;
+                h = Math.max(25, maxW / aspect);
+            } else {
+                h = maxH;
+                w = Math.max(25, maxH * aspect);
+            }
+
+            const x = (320 - w) / 2;
+            const y = (160 - h) / 2;
+
+            svgRect.setAttribute("x", x);
+            svgRect.setAttribute("y", y);
+            svgRect.setAttribute("width", w);
+            svgRect.setAttribute("height", h);
+
+            // Diagonal
+            svgDiagonal.setAttribute("x1", x);
+            svgDiagonal.setAttribute("y1", y + h);
+            svgDiagonal.setAttribute("x2", x + w);
+            svgDiagonal.setAttribute("y2", y);
+
+            // Text labels
+            svgTextP.setAttribute("x", x + (w / 2));
+            svgTextP.setAttribute("y", Math.max(12, y - 8));
+            svgTextP.textContent = `p = ${p} cm`;
+
+            svgTextL.setAttribute("x", Math.max(15, x - 15));
+            svgTextL.setAttribute("y", y + (h / 2));
+            svgTextL.setAttribute("transform", `rotate(-90 ${Math.max(15, x - 15)} ${y + (h / 2)})`);
+            svgTextL.textContent = `l = ${l} cm`;
+
+            previewRatioText.innerText = `Rasio: ${p} : ${l} (${(p/l).toFixed(2)})`;
+        }
+
+        // Update Terminal Mirror dalam kartu
+        function updateTerminalMirror(p, l, luasVal, kelilingVal, diagVal) {
+            consoleMirrorBody.innerHTML = `
+                <span class="term-line">> === PERHITUNGAN PERSEGI PANJANG ===</span>
+                <span class="term-line">> Panjang  : <span class="term-highlight">${p} cm</span></span>
+                <span class="term-line">> Lebar    : <span class="term-highlight">${l} cm</span></span>
+                <span class="term-line">> Luas     : <span class="term-highlight">${luasVal} cm²</span></span>
+                <span class="term-line">> Keliling : <span class="term-highlight">${kelilingVal} cm</span></span>
+                <span class="term-line">> Diagonal : <span class="term-highlight">${diagVal.toFixed(2)} cm</span></span>
+                <span class="term-line">> Status   : Perhitungan berhasil dikonfirmasi! ✓</span>
+            `;
+        }
+
+        // Tampilkan nilai awal
+        tampilkanHasil(panjang, lebar);
+
+        // Update otomatis jika input diubah
+        function hitungUlang() {
+            let p = parseFloat(inputP.value) || 0;
+            let l = parseFloat(inputL.value) || 0;
+            
+            // Sinkronkan slider
+            sliderP.value = Math.min(100, Math.max(1, p));
+            sliderL.value = Math.min(100, Math.max(1, l));
+
+            tampilkanHasil(p, l);
+            console.log("Panjang: " + p + " | Lebar: " + l + " | Luas: " + (p * l) + " | Keliling: " + (2 * (p + l)));
+            playCosmicSound("input");
+        }
+
+        inputP.addEventListener("input", hitungUlang);
+        inputL.addEventListener("input", hitungUlang);
+
+        // Sinkronisasi slider ke input angka
+        sliderP.addEventListener("input", function() {
+            inputP.value = sliderP.value;
+            hitungUlang();
+        });
+
+        sliderL.addEventListener("input", function() {
+            inputL.value = sliderL.value;
+            hitungUlang();
+        });
+
+        // Preset Cepat
+        function setPreset(p, l) {
+            inputP.value = p;
+            inputL.value = l;
+            hitungUlang();
+            showToast(`Preset diterapkan: ${p} × ${l} cm 📐`);
+        }
+
+        /* ========================================================
+           2. TEMA ENGINE KOSMIK (BISA MEMILIH TEMA BACKGROUND)
+           ======================================================== */
+        const themeDropdownBtn = document.getElementById("themeDropdownBtn");
+        const themeDropdown = document.getElementById("themeDropdown");
+        const currentThemeName = document.getElementById("currentThemeName");
+        const themeOptions = document.querySelectorAll(".theme-option");
+
+        const themeNamesMap = {
+            "cosmic-nebula": "Cosmic Nebula",
+            "cyberpunk-neon": "Cyberpunk Neon",
+            "supernova-gold": "Supernova Gold",
+            "aurora-borealis": "Aurora Borealis",
+            "void-eclipse": "Void Eclipse",
+            "starlight-sakura": "Starlight Sakura"
+        };
+
+        // Buka / Tutup dropdown tema
+        themeDropdownBtn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            themeDropdown.classList.toggle("open");
+        });
+
+        // Tutup dropdown jika klik di luar area theme-selector-box
+        document.addEventListener("click", function(e) {
+            if (!e.target.closest(".theme-selector-box")) {
+                themeDropdown.classList.remove("open");
+            }
+        });
+
+        // Pilih tema - silent=true untuk load awal (tanpa toast & suara)
+        function applyTheme(themeKey, silent = false) {
+            document.documentElement.setAttribute("data-theme", themeKey);
+            currentThemeName.innerText = themeNamesMap[themeKey] || "Cosmic Nebula";
+            
+            themeOptions.forEach(opt => {
+                if (opt.getAttribute("data-theme-val") === themeKey) {
+                    opt.classList.add("active");
+                } else {
+                    opt.classList.remove("active");
+                }
+            });
+
+            // Update dot warna di button
+            const selectedOption = themeDropdown.querySelector(`[data-theme-val="${themeKey}"]`);
+            const dot = themeSelectBtn.querySelector(".theme-preview-dot");
+            if (selectedOption && dot) {
+                const srcDot = selectedOption.querySelector(".theme-option-dot");
+                if (srcDot) {
+                    dot.style.background = srcDot.style.background;
+                    dot.style.boxShadow = srcDot.style.boxShadow;
+                }
+            }
+
+            // Simpan ke localStorage
+            try {
+                localStorage.setItem("cosmic_theme", themeKey);
+            } catch (err) {}
+
+            // Hanya tampilkan notif & suara jika dipilih manual
+            if (!silent) {
+                playCosmicSound("theme");
+                showToast(`Tema diubah: ${themeNamesMap[themeKey]} 🎨`);
+            }
+        }
+
+        const themeSelectBtn = document.getElementById("themeDropdownBtn");
+
+        themeOptions.forEach(btn => {
+            btn.addEventListener("click", function(e) {
+                e.stopPropagation();
+                const selectedTheme = this.getAttribute("data-theme-val");
+                applyTheme(selectedTheme); // manual = tidak silent
+                themeDropdown.classList.remove("open");
+            });
+        });
+
+        // Muat tema yang tersimpan, atau set default (silent = tanpa toast)
+        try {
+            const savedTheme = localStorage.getItem("cosmic_theme");
+            if (savedTheme && themeNamesMap[savedTheme]) {
+                applyTheme(savedTheme, true);
+            } else {
+                applyTheme("cosmic-nebula", true);
+            }
+        } catch (e) {
+            applyTheme("cosmic-nebula", true);
+        }
+
+        /* ========================================================
+           3. WEB AUDIO API: GENERATOR SUARA KOSMIK
+           ======================================================== */
+        let audioEnabled = true;
+        let audioCtx = null;
+
+        // Inisialisasi AudioContext saat pertama kali ada interaksi user
+        function initAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) {
+                    audioCtx = new AudioContext();
+                }
+            }
+        }
+        document.addEventListener("click", initAudioContext, { once: true });
+        document.addEventListener("keydown", initAudioContext, { once: true });
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) {
+                    audioCtx = new AudioContext();
+                }
+            }
+            if (audioCtx && audioCtx.state === "suspended") {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playCosmicSound(type) {
+            if (!audioEnabled) return;
+            const ctx = getAudioContext();
+            if (!ctx) return;
+
+            const now = ctx.currentTime;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            if (type === "num") {
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(320 + Math.random() * 80, now);
+                osc.frequency.exponentialRampToValueAtTime(480, now + 0.08);
+                gain.gain.setValueAtTime(0.08, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+                osc.start(now);
+                osc.stop(now + 0.08);
+            } else if (type === "op") {
+                osc.type = "triangle";
+                osc.frequency.setValueAtTime(540, now);
+                osc.frequency.exponentialRampToValueAtTime(720, now + 0.1);
+                gain.gain.setValueAtTime(0.07, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+                osc.start(now);
+                osc.stop(now + 0.1);
+            } else if (type === "equals") {
+                // Chord kosmik
+                [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
+                    const chordOsc = ctx.createOscillator();
+                    const chordGain = ctx.createGain();
+                    chordOsc.connect(chordGain);
+                    chordGain.connect(ctx.destination);
+                    chordOsc.type = "sine";
+                    chordOsc.frequency.setValueAtTime(freq, now + (idx * 0.03));
+                    chordGain.gain.setValueAtTime(0.05, now + (idx * 0.03));
+                    chordGain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+                    chordOsc.start(now + (idx * 0.03));
+                    chordOsc.stop(now + 0.4);
+                });
+            } else if (type === "clear") {
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(350, now);
+                osc.frequency.exponentialRampToValueAtTime(150, now + 0.12);
+                gain.gain.setValueAtTime(0.08, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+                osc.start(now);
+                osc.stop(now + 0.12);
+            } else if (type === "theme") {
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(440, now);
+                osc.frequency.exponentialRampToValueAtTime(880, now + 0.2);
+                gain.gain.setValueAtTime(0.06, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+                osc.start(now);
+                osc.stop(now + 0.25);
+            } else if (type === "input") {
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(420, now);
+                gain.gain.setValueAtTime(0.03, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+                osc.start(now);
+                osc.stop(now + 0.05);
+            }
+        }
+
+        // Toggle Audio
+        const soundToggleBtn = document.getElementById("soundToggleBtn");
+        const soundIcon = document.getElementById("soundIcon");
+        const soundText = document.getElementById("soundText");
+
+        soundToggleBtn.addEventListener("click", function() {
+            audioEnabled = !audioEnabled;
+            if (audioEnabled) {
+                soundIcon.innerText = "🔊";
+                soundText.innerText = "Audio: Aktif";
+                showToast("Audio kosmik diaktifkan 🎵");
+                playCosmicSound("theme");
+            } else {
+                soundIcon.innerText = "🔇";
+                soundText.innerText = "Audio: Mute";
+                showToast("Audio dinonaktifkan 🔇");
+            }
+        });
+
+        /* ========================================================
+           4. MODE SWITCHER TABS
+           ======================================================== */
+        function switchCalculatorMode(mode) {
+            const tabPersegi = document.getElementById("tabPersegi");
+            const tabUniversal = document.getElementById("tabUniversal");
+            const contentPersegi = document.getElementById("contentPersegi");
+            const contentUniversal = document.getElementById("contentUniversal");
+
+            if (mode === "persegi") {
+                tabPersegi.classList.add("active");
+                tabUniversal.classList.remove("active");
+                contentPersegi.classList.add("active");
+                contentUniversal.classList.remove("active");
+            } else {
+                tabPersegi.classList.remove("active");
+                tabUniversal.classList.add("active");
+                contentPersegi.classList.remove("active");
+                contentUniversal.classList.add("active");
+            }
+            playCosmicSound("op");
+        }
+
+        /* ========================================================
+           5. KALKULATOR KOSMIK UNIVERSAL (ENGINE)
+           ======================================================== */
+        let calcCurrentVal = "0";
+        let calcExpressionVal = "";
+        let calcIsDegree = false;
+        let calcHistory = [];
+
+        const calcDisplay = document.getElementById("calcDisplay");
+        const calcExpression = document.getElementById("calcExpression");
+        const sciKeysDrawer = document.getElementById("sciKeysDrawer");
+        const toggleSciBtn = document.getElementById("toggleSciBtn");
+        const calcHistoryList = document.getElementById("calcHistoryList");
+        const radDegLabel = document.getElementById("radDegLabel");
+        const calcDegreeMode = document.getElementById("calcDegreeMode");
+
+        function updateCalcDisplay() {
+            calcDisplay.innerText = calcCurrentVal;
+            calcExpression.innerText = calcExpressionVal;
+
+            // Sesuaikan ukuran font jika panjang
+            if (calcCurrentVal.length > 10) {
+                calcDisplay.style.fontSize = "26px";
+            } else if (calcCurrentVal.length > 7) {
+                calcDisplay.style.fontSize = "34px";
+            } else {
+                calcDisplay.style.fontSize = "44px";
+            }
+        }
+
+        function calcInput(char) {
+            playCosmicSound("num");
+
+            if (char >= '0' && char <= '9') {
+                if (calcCurrentVal === "0" || calcCurrentVal === "Error") {
+                    calcCurrentVal = char;
+                } else {
+                    calcCurrentVal += char;
+                }
+            } else if (char === '.') {
+                if (!calcCurrentVal.includes('.')) {
+                    calcCurrentVal += '.';
+                }
+            } else if (char === 'pi') {
+                calcCurrentVal = Math.PI.toFixed(6).toString();
+            } else if (char === 'e') {
+                calcCurrentVal = Math.E.toFixed(6).toString();
+            } else if (['+', '-', '×', '÷', '%', '^'].includes(char)) {
+                playCosmicSound("op");
+                calcExpressionVal += calcCurrentVal + " " + char + " ";
+                calcCurrentVal = "0";
+            } else if (char.endsWith('(')) {
+                // Fungsi saintifik seperti sin(, cos(, sqrt(, etc
+                playCosmicSound("op");
+                calcExpressionVal += char;
+                calcCurrentVal = "0";
+            }
+
+            updateCalcDisplay();
+        }
+
+        function calcDelete() {
+            playCosmicSound("clear");
+            if (calcCurrentVal.length > 1 && calcCurrentVal !== "Error") {
+                calcCurrentVal = calcCurrentVal.slice(0, -1);
+            } else {
+                calcCurrentVal = "0";
+            }
+            updateCalcDisplay();
+        }
+
+        function calcClear() {
+            playCosmicSound("clear");
+            calcCurrentVal = "0";
+            calcExpressionVal = "";
+            updateCalcDisplay();
+        }
+
+        function toggleSciKeys() {
+            sciKeysDrawer.classList.toggle("open");
+            toggleSciBtn.classList.toggle("active");
+            playCosmicSound("op");
+        }
+
+        function toggleDegRad() {
+            calcIsDegree = !calcIsDegree;
+            const modeText = calcIsDegree ? "DEG" : "RAD";
+            radDegLabel.innerText = modeText;
+            calcDegreeMode.innerText = modeText;
+            playCosmicSound("op");
+            showToast(`Sudut diatur ke: ${modeText} 📐`);
+        }
+
+        function calcExecute() {
+            try {
+                let fullExpr = (calcExpressionVal + calcCurrentVal).trim();
+                if (!fullExpr) return;
+
+                // Parsing ekspresi aman
+                let sanitized = fullExpr
+                    .replace(/×/g, '*')
+                    .replace(/÷/g, '/')
+                    .replace(/\^/g, '**')
+                    .replace(/pi/g, Math.PI)
+                    .replace(/e/g, Math.E);
+
+                // Tangani fungsi trigonometri
+                sanitized = sanitized.replace(/sin\(([^)]+)\)/g, (match, val) => {
+                    let num = eval(val);
+                    if (calcIsDegree) num = num * (Math.PI / 180);
+                    return Math.sin(num);
+                });
+                sanitized = sanitized.replace(/cos\(([^)]+)\)/g, (match, val) => {
+                    let num = eval(val);
+                    if (calcIsDegree) num = num * (Math.PI / 180);
+                    return Math.cos(num);
+                });
+                sanitized = sanitized.replace(/tan\(([^)]+)\)/g, (match, val) => {
+                    let num = eval(val);
+                    if (calcIsDegree) num = num * (Math.PI / 180);
+                    return Math.tan(num);
+                });
+                sanitized = sanitized.replace(/sqrt\(([^)]+)\)/g, (match, val) => `Math.sqrt(${val})`);
+                sanitized = sanitized.replace(/log\(([^)]+)\)/g, (match, val) => `Math.log10(${val})`);
+
+                // Evaluasi hasil dengan Function sanitizer
+                let rawResult = Function('"use strict"; return (' + sanitized + ')')();
+                
+                if (isNaN(rawResult) || !isFinite(rawResult)) {
+                    calcCurrentVal = "Error";
+                } else {
+                    let formattedResult = Number.isInteger(rawResult) 
+                        ? rawResult.toString() 
+                        : parseFloat(rawResult.toFixed(8)).toString();
+
+                    // Simpan riwayat
+                    calcHistory.unshift({ eq: fullExpr, res: formattedResult });
+                    if (calcHistory.length > 8) calcHistory.pop();
+                    renderHistory();
+
+                    calcExpressionVal = fullExpr + " =";
+                    calcCurrentVal = formattedResult;
+                    playCosmicSound("equals");
+                }
+            } catch (err) {
+                calcCurrentVal = "Error";
+                playCosmicSound("clear");
+            }
+            updateCalcDisplay();
+        }
+
+        function renderHistory() {
+            if (calcHistory.length === 0) {
+                calcHistoryList.innerHTML = '<div style="font-size: 12px; color: var(--text-dim); text-align: center; padding: 10px;">Belum ada riwayat</div>';
+                return;
+            }
+
+            calcHistoryList.innerHTML = calcHistory.map((item, idx) => `
+                <div class="history-item" onclick="reuseHistory(${idx})">
+                    <span class="history-eq">${item.eq} =</span>
+                    <span class="history-res">${item.res}</span>
+                </div>
+            `).join('');
+        }
+
+        function reuseHistory(index) {
+            const item = calcHistory[index];
+            if (item) {
+                calcCurrentVal = item.res;
+                calcExpressionVal = "";
+                updateCalcDisplay();
+                playCosmicSound("num");
+                showToast(`Menggunakan hasil: ${item.res}`);
+            }
+        }
+
+        function clearCalcHistory() {
+            calcHistory = [];
+            renderHistory();
+            playCosmicSound("clear");
+            showToast("Riwayat dibersihkan");
+        }
+
+        // Dukungan Keyboard
+        window.addEventListener("keydown", function(e) {
+            const activeTab = document.getElementById("contentUniversal").classList.contains("active");
+            if (!activeTab) return; // Hanya aktif saat di tab kalkulator universal
+
+            if (e.key >= '0' && e.key <= '9') {
+                calcInput(e.key);
+            } else if (e.key === '.') {
+                calcInput('.');
+            } else if (e.key === '+') {
+                calcInput('+');
+            } else if (e.key === '-') {
+                calcInput('-');
+            } else if (e.key === '*') {
+                calcInput('×');
+            } else if (e.key === '/') {
+                e.preventDefault();
+                calcInput('÷');
+            } else if (e.key === 'Enter' || e.key === '=') {
+                e.preventDefault();
+                calcExecute();
+            } else if (e.key === 'Backspace') {
+                calcDelete();
+            } else if (e.key === 'Escape') {
+                calcClear();
+            }
+        });
+
+        /* ========================================================
+           6. FITUR SALIN NILAI & TOAST NOTIFICATION
+           ======================================================== */
+        function copyValue(elementId, unit) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            const textToCopy = `${el.innerText} ${unit}`;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showToast(`Disalin: ${textToCopy} 📋`);
+                playCosmicSound("num");
+            }).catch(() => {
+                showToast(`Nilai: ${textToCopy}`);
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("cosmicToast");
+            const toastMsg = document.getElementById("toastMsg");
+            toastMsg.innerText = message;
+            toast.classList.add("show");
+            
+            clearTimeout(window._toastTimeout);
+            window._toastTimeout = setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2600);
+        }
+
+        /* ========================================================
+           7. PARTICLES & SHOOTING STAR CANVAS ENGINE
+           ======================================================== */
+        const canvas = document.getElementById("cosmicCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let stars = [];
+        let shootingStars = [];
+        let mouseX = -1000;
+        let mouseY = -1000;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initStars();
+        }
+
+        window.addEventListener("resize", resizeCanvas);
+
+        window.addEventListener("mousemove", function(e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function initStars() {
+            stars = [];
+            const count = Math.floor((canvas.width * canvas.height) / 4500);
+            for (let i = 0; i < count; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.5 + 0.3,
+                    alpha: Math.random() * 0.8 + 0.2,
+                    speed: Math.random() * 0.02 + 0.005,
+                    vx: (Math.random() - 0.5) * 0.15,
+                    vy: (Math.random() - 0.5) * 0.15
+                });
+            }
+        }
+
+        function spawnShootingStar() {
+            if (Math.random() < 0.015 && shootingStars.length < 3) {
+                shootingStars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * (canvas.height * 0.4),
+                    len: Math.random() * 80 + 40,
+                    speed: Math.random() * 10 + 12,
+                    angle: Math.PI / 4 + (Math.random() - 0.5) * 0.2,
+                    alpha: 1
+                });
+            }
+        }
+
+        function getStarColor() {
+            const style = getComputedStyle(document.documentElement);
+            return style.getPropertyValue('--canvas-star').trim() || '255, 255, 255';
+        }
+
+        function drawCosmicSky() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const starColor = getStarColor();
+
+            // Render Stars
+            for (let s of stars) {
+                s.alpha += s.speed;
+                if (s.alpha > 1 || s.alpha < 0.2) s.speed = -s.speed;
+
+                s.x += s.vx;
+                s.y += s.vy;
+
+                if (s.x < 0) s.x = canvas.width;
+                if (s.x > canvas.width) s.x = 0;
+                if (s.y < 0) s.y = canvas.height;
+                if (s.y > canvas.height) s.y = 0;
+
+                // Mouse Repulsion gentle wave
+                const dx = mouseX - s.x;
+                const dy = mouseY - s.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 80) {
+                    s.x -= (dx / dist) * 1.5;
+                    s.y -= (dy / dist) * 1.5;
+                }
+
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${starColor}, ${Math.max(0, Math.min(1, s.alpha))})`;
+                ctx.fill();
+            }
+
+            // Render Shooting Stars
+            spawnShootingStar();
+            for (let i = shootingStars.length - 1; i >= 0; i--) {
+                const ss = shootingStars[i];
+                const tailX = ss.x - Math.cos(ss.angle) * ss.len;
+                const tailY = ss.y - Math.sin(ss.angle) * ss.len;
+
+                const grad = ctx.createLinearGradient(tailX, tailY, ss.x, ss.y);
+                grad.addColorStop(0, `rgba(${starColor}, 0)`);
+                grad.addColorStop(1, `rgba(${starColor}, ${ss.alpha})`);
+
+                ctx.beginPath();
+                ctx.moveTo(tailX, tailY);
+                ctx.lineTo(ss.x, ss.y);
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = 1.8;
+                ctx.stroke();
+
+                ss.x += Math.cos(ss.angle) * ss.speed;
+                ss.y += Math.sin(ss.angle) * ss.speed;
+                ss.alpha -= 0.02;
+
+                if (ss.alpha <= 0 || ss.x > canvas.width || ss.y > canvas.height) {
+                    shootingStars.splice(i, 1);
+                }
+            }
+
+            requestAnimationFrame(drawCosmicSky);
+        }
+
+        // Jalankan kanvas
+        resizeCanvas();
+        requestAnimationFrame(drawCosmicSky);
+    </script>
+</body>
+</html>
